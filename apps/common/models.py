@@ -63,7 +63,7 @@ class Author(models.Model, BaseModel):
         verbose_name_plural = 'authors'
 
 
-class SubscriptionModel(models.Model):
+class Subscription(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE
