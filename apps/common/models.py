@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 
 
@@ -139,7 +140,7 @@ class Article(models.Model, BaseModel):
         Tag,
         related_name='tag',
     )
-    description = 111
+    description = RichTextField(config_name='awesome_ckeditor')
     read_time = models.IntegerField()
     comment = models.ForeignKey(
         Comment,
