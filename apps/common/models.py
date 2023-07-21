@@ -10,7 +10,7 @@ class BaseModel(models.Model):
         abstract = True
 
 
-class User(models.Model, BaseModel):
+class User(BaseModel):
     username = models.CharField(max_length=55)
 
     def __str__(self):
@@ -21,7 +21,7 @@ class User(models.Model, BaseModel):
         verbose_name_plural = 'users'
 
 
-class Occupation(models.Model, BaseModel):
+class Occupation(BaseModel):
     name = models.CharField(max_length=125)
 
     def __str__(self):
@@ -32,7 +32,7 @@ class Occupation(models.Model, BaseModel):
         verbose_name_plural = 'occupations'
 
 
-class AuthorSocialMedia(models.Model, BaseModel):
+class AuthorSocialMedia(BaseModel):
     name = models.CharField(max_length=55)
     icon = models.FileField()
     url = models.URLField()
@@ -41,7 +41,7 @@ class AuthorSocialMedia(models.Model, BaseModel):
         return self.name
 
 
-class Author(models.Model, BaseModel):
+class Author(BaseModel):
     name = models.CharField(max_length=55)
     address = models.TextField()
     social_media = models.ForeignKey(
@@ -82,7 +82,7 @@ class Subscription(models.Model):
         verbose_name = 'subscription'
 
 
-class InstagramLink(models.Model, BaseModel):
+class InstagramLink(BaseModel):
     picture = models.ImageField()
     url = models.URLField()
 
@@ -90,7 +90,7 @@ class InstagramLink(models.Model, BaseModel):
         verbose_name = 'InstagramLink'
 
 
-class Category(models.Model, BaseModel):
+class Category(BaseModel):
     name = models.CharField(max_length=125)
 
     def __str__(self):
@@ -100,7 +100,7 @@ class Category(models.Model, BaseModel):
         verbose_name = 'category'
 
 
-class Tag(models.Model, BaseModel):
+class Tag(BaseModel):
     name = models.CharField(max_length=125)
 
     def __str__(self):
@@ -110,8 +110,8 @@ class Tag(models.Model, BaseModel):
         verbose_name = 'tag'
 
 
-class Comment(models.Model, BaseModel):
-    user = models.ManyToManyRel(
+class Comment(BaseModel):
+    user = models.ManyToManyField(
         User,
         related_name='comment',
     )
@@ -124,7 +124,7 @@ class Comment(models.Model, BaseModel):
         verbose_name = 'comment'
 
 
-class Article(models.Model, BaseModel):
+class Article(BaseModel):
     name = models.CharField(max_length=125)
     author = models.ForeignKey(
         Author,
@@ -155,7 +155,7 @@ class Article(models.Model, BaseModel):
         verbose_name = 'category'
 
 
-class FAQ(models.Model, BaseModel):
+class FAQ(BaseModel):
     title = models.CharField(max_length=255)
     description = models.TextField()
 
@@ -166,7 +166,7 @@ class FAQ(models.Model, BaseModel):
         verbose_name = 'FAQ'
 
 
-class Contact(models.Model, BaseModel):
+class Contact(BaseModel):
     name = models.CharField(max_length=255)
     email = models.EmailField()
     subject = models.TextField()
