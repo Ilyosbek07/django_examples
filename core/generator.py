@@ -1,5 +1,5 @@
 from drf_yasg.generators import OpenAPISchemaGenerator
-
+###
 
 class BothHttpAndHttpsSchemaGenerator(OpenAPISchemaGenerator):
     def get_schema(self, request=None, public=False):
