@@ -136,7 +136,7 @@ class Article(models.Model, BaseModel):
         related_name='category',
         on_delete=models.CASCADE
     )
-    tag = models.ManyToManyRel(
+    tag = models.ManyToManyField(
         Tag,
         related_name='tag',
     )
